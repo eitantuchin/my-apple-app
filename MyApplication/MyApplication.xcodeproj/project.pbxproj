@@ -31,8 +31,6 @@
 		98EF749F2D149E4F0053439F /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 98EF749E2D149E4F0053439F /* FirebaseStorage */; };
 		98EF74A12D149E4F0053439F /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 98EF74A02D149E4F0053439F /* FirebaseStorageCombine-Community */; };
 		98EF74A32D149E4F0053439F /* FirebaseVertexAI in Frameworks */ = {isa = PBXBuildFile; productRef = 98EF74A22D149E4F0053439F /* FirebaseVertexAI */; };
-		98EF74A42D149E4F0053439F /* MyApplicationTests.xctest in Embed PlugIns */ = {isa = PBXBuildFile; fileRef = 98EF74512D148ADB0053439F /* MyApplicationTests.xctest */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		98EF74A72D149E500053439F /* MyApplicationUITests.xctest in Embed PlugIns */ = {isa = PBXBuildFile; fileRef = 98EF745B2D148ADB0053439F /* MyApplicationUITests.xctest */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,36 +48,7 @@
 			remoteGlobalIDString = 98EF743D2D148AD80053439F;
 			remoteInfo = MyApplication;
 		};
-		98EF74A52D149E500053439F /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 98EF74362D148AD80053439F /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 98EF74502D148ADB0053439F;
-			remoteInfo = MyApplicationTests;
-		};
-		98EF74A82D149E500053439F /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 98EF74362D148AD80053439F /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 98EF745A2D148ADB0053439F;
-			remoteInfo = MyApplicationUITests;
-		};
 /* End PBXContainerItemProxy section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		98EF74AA2D149E510053439F /* Embed PlugIns */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 13;
-			files = (
-				98EF74A42D149E4F0053439F /* MyApplicationTests.xctest in Embed PlugIns */,
-				98EF74A72D149E500053439F /* MyApplicationUITests.xctest in Embed PlugIns */,
-			);
-			name = "Embed PlugIns";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		98EF743E2D148AD80053439F /* MyApplication.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyApplication.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -2010,13 +1979,10 @@
 				98EF743A2D148AD80053439F /* Sources */,
 				98EF743B2D148AD80053439F /* Frameworks */,
 				98EF743C2D148AD80053439F /* Resources */,
-				98EF74AA2D149E510053439F /* Embed PlugIns */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				98EF74A62D149E500053439F /* PBXTargetDependency */,
-				98EF74A92D149E500053439F /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				98EF74402D148AD80053439F /* MyApplication */,
@@ -2203,16 +2169,6 @@
 			isa = PBXTargetDependency;
 			target = 98EF743D2D148AD80053439F /* MyApplication */;
 			targetProxy = 98EF745C2D148ADB0053439F /* PBXContainerItemProxy */;
-		};
-		98EF74A62D149E500053439F /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 98EF74502D148ADB0053439F /* MyApplicationTests */;
-			targetProxy = 98EF74A52D149E500053439F /* PBXContainerItemProxy */;
-		};
-		98EF74A92D149E500053439F /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 98EF745A2D148ADB0053439F /* MyApplicationUITests */;
-			targetProxy = 98EF74A82D149E500053439F /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 

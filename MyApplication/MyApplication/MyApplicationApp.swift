@@ -7,9 +7,12 @@
 
 import SwiftUI
 import SwiftData
+import FirebaseCore
 
 @main
 struct MyApplicationApp: App {
+    // register app delegate for Firebase setup
+    @UIApplicationDelegateAdaptor(MyApplication.self) var delegate
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
             Item.self,
@@ -30,3 +33,12 @@ struct MyApplicationApp: App {
         .modelContainer(sharedModelContainer)
     }
 }
+
+class MyApplication: NSObject, UIApplicationDelegate {
+  func application(_ application: UIApplication,
+                   didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
+    FirebaseApp.configure()
+    return true
+  }
+}
+
