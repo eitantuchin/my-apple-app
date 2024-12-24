@@ -30,7 +30,7 @@ struct MyApplicationApp: App {
     
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            StartScreen()
         }
         .modelContainer(sharedModelContainer)
     }

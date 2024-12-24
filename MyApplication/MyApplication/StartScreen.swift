@@ -10,63 +10,53 @@ import Firebase
 import GoogleSignIn
 import FirebaseAuth
 
-struct ContentView: View {
-    @State private var users: [User] = [] // Holds the fetched users
+struct StartScreen: View {
     @State private var isAuthenticated: Bool = false // Tracks authentication
+    @State private var isLoading: Bool = true // Tracks whether to show the loading screen
 
     var body: some View {
-        VStack {
-            if isAuthenticated {
-                // Show authenticated content
-                List(users) { user in
-                    VStack(alignment: .leading) {
-                        Text(user.username)
-                            .font(.headline)
-                        Text(user.email)
-                            .font(.subheadline)
+            Group {
+                if isLoading {
+                    LoadingScreen()
+                        .onAppear {
+                            // Simulate loading or perform startup tasks
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 5 ) {
+                                isLoading = false
+                            }
+                        }
+                } else {
+                    VStack {
+                        if isAuthenticated {
+                            // Authenticated content
+                            EventsScreen()
+                        } else {
+                            // Sign-in button
+                            Button(action: signInWithGoogle) {
+                                Text("Sign in with Google")
+                                    .padding()
+                                    .background(Color.blue)
+                                    .foregroundColor(.white)
+                                    .cornerRadius(8)
+                            }
+                            Button(action: signInWithApple) {
+                                Text("Sign in with Google")
+                                    .padding()
+                                    .background(Color.blue)
+                                    .foregroundColor(.white)
+                                    .cornerRadius(8)
+                            }
+                        }
                     }
-                }
-                .onAppear {
-                    fetchUsers() // Fetch users when the view appears
-                }
-            } else {
-                // Show sign-in button for unauthenticated users
-                Button(action: signIn) {
-                    Text("Sign in with Google")
-                        .padding()
-                        .background(Color.blue)
-                        .foregroundColor(.white)
-                        .cornerRadius(8)
+                    .padding()
                 }
             }
         }
-        .padding()
+    
+    func signInWithApple() {
+        
     }
 
-    // Function to fetch users from Firestore
-    func fetchUsers() {
-        let db = Firestore.firestore()
-
-        db.collection("users").getDocuments { snapshot, error in
-            if let error = error {
-                print("Error getting documents: \(error.localizedDescription)")
-                return
-            }
-
-            guard let snapshot = snapshot else { return }
-
-            self.users = snapshot.documents.compactMap { document in
-                let data = document.data()
-                guard let username = data["username"] as? String,
-                      let email = data["email"] as? String else {
-                    return nil
-                }
-                return User(id: document.documentID, username: username, email: email)
-            }
-        }
-    }
-
-    func signIn() {
+    func signInWithGoogle() {
         // Get the presenting view controller
         guard let presentingViewController = getRootViewController() else {
             print("Unable to get the root view controller")
@@ -114,16 +104,6 @@ struct ContentView: View {
 
 }
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-    }
+#Preview {
+    StartScreen()
 }
-
-// Define User model
-struct User: Identifiable, Codable {
-    var id: String
-    var username: String
-    var email: String
-}
-
